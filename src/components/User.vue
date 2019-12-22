@@ -1,12 +1,21 @@
 <template>
   <transition name="fade" mode="out-in">
     <template v-if="loadingData">
-      <img class="user__loader" :src="require('../assets/oval.svg')" alt="Loading data" key="loading-spinner">
+      <img
+        class="user__loader"
+        :src="require('../assets/oval.svg')"
+        alt="Loading data"
+        key="loading-spinner"
+      >
     </template>
     <template v-else>
       <div class="user" key="user">
         <div class="user__details">
-          <img class="user__avatar" :src="userDetails.avatar_url" alt="Wojciech Kosla gravatar">
+          <img
+            class="user__avatar"
+            :src="userDetails.avatar_url"
+            alt="Wojciech Kosla gravatar"
+          >
           <header class="user__header">
             <h1 class="user__name">
               {{userDetails.name}}
@@ -38,9 +47,7 @@
               target="__blank"
               rel="noreferer"
             >
-              <Repo
-                :repo="repo"
-              />
+              <Repo :repo="repo" />
             </a>
           </ul>
         </div>
@@ -66,7 +73,7 @@ export default {
     },
     loadingData() {
       return this.$store.getters.getLoadingStatus;
-    }
+    },
   },
 };
 </script>
