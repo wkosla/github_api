@@ -1,5 +1,7 @@
 # crafton_task_vue
 
+Build using Vue CLI. Requires Node.js.
+
 ## Project setup
 ```
 npm install
