@@ -57,7 +57,14 @@ export default {
   font-size: 1em;
   margin-right: 10px;
   padding: 10px;
+  transition: .15s;
   width: 300px;
+  will-change: transition;
+
+  &:hover,
+  &:focus {
+    border-color: darken($line-color, 20%);
+  }
 }
 
 .input__btn {
