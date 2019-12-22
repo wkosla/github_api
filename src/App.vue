@@ -6,6 +6,11 @@
     </div>
     <User
       v-if="activeUser"
+      key="user-info"
+    />
+    <Error
+      v-else-if="userError"
+      key="user-error"
     />
   </div>
 </template>
@@ -14,6 +19,7 @@
 const UsernamesInput = () => import('@/components/Input.vue');
 const Tabs = () => import('@/components/Tabs.vue');
 const User = () => import('@/components/User.vue');
+const Error = () => import('@/components/Error.vue');
 
 export default {
   name: 'app',
@@ -21,6 +27,7 @@ export default {
     UsernamesInput,
     Tabs,
     User,
+    Error,
   },
   computed: {
     usersList() {
@@ -28,6 +35,9 @@ export default {
     },
     activeUser() {
       return this.$store.getters.getUserDetails.login;
+    },
+    userError() {
+      return this.$store.getters.getUserError;
     },
   },
 };
@@ -64,5 +74,15 @@ a {
 
 #app {
   padding-bottom: 80px;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .2s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

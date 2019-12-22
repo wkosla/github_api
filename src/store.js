@@ -20,12 +20,14 @@ const store = new Vuex.Store({
     userDetails: {},
     userRepos: {},
     dataLoading: false,
+    userError: false,
   },
   getters: {
     getUsersList: state => state.usersList,
     getUserDetails: state => state.userDetails,
     getUserRepos: state => state.userRepos,
     getLoadingStatus: state => state.dataLoading,
+    getUserError: state => state.userError,
   },
   mutations: {
     ADD_USERS: (state, array) => {
@@ -40,11 +42,17 @@ const store = new Vuex.Store({
     CHANGE_LOADING_STATUS: (state, loading) => {
       state.dataLoading = loading;
     },
+    SET_USER_ERROR: (state, err) => {
+      state.userError = err;
+    },
   },
   actions: {
-    GET_USER_DETAILS: ({ state, commit }, username) => {
+    GET_USER_DETAILS: ({ state, commit, dispatch }, username) => {
+      dispatch('CLEAR_USER');
+
       if (state.userDetails.login !== username) {
         commit('CHANGE_LOADING_STATUS', true);
+        commit('SET_USER_ERROR', false);
 
         apiRequest(username).then(({ data }) => {
           commit('SET_DETAILS', data);
@@ -53,8 +61,15 @@ const store = new Vuex.Store({
             commit('SET_REPOS', data);
             commit('CHANGE_LOADING_STATUS', false);
           });
+        }).catch(() => {
+          commit('CHANGE_LOADING_STATUS', false);
+          commit('SET_USER_ERROR', true);
         });
       }
+    },
+    CLEAR_USER: ({ commit }) => {
+      commit('SET_DETAILS', {});
+      commit('SET_REPOS', {});
     },
   },
 });
