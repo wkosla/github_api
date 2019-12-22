@@ -14,7 +14,7 @@ export default {
   },
   methods: {
     showUserDetails() {
-      this.$store.commit('GET_USER_DETAILS', this.user);
+      this.$store.dispatch('GET_USER_DETAILS', this.user);
     },
   },
 };
