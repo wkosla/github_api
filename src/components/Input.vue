@@ -19,7 +19,7 @@ export default {
   methods: {
     updateUsersList() {
       const users = this.users.split(' ');
-      this.$store.commit('ADD_USERS', users.slice(0, users.length - 1));
+      this.$store.commit('ADD_USERS', users);
     },
   },
 };

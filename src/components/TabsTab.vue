@@ -1,5 +1,5 @@
 <template>
-  <li>{{user}}</li>
+  <li @click="showUserDetails">{{user}}</li>
 </template>
 
 <script>
@@ -10,6 +10,11 @@ export default {
       type: String,
       required: true,
       default: '',
+    },
+  },
+  methods: {
+    showUserDetails() {
+      this.$store.commit('GET_USER_DETAILS', this.user);
     },
   },
 };
