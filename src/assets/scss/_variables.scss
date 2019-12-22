@@ -1,17 +1,14 @@
 // FONT COLORS
 $primary: #332d37;
 $secondary: lighten($primary, 20%);
-$inverted: #fff;
 $link: #e74a3c;
 
 // BG COLOR:
 $bg-primary: #fff;
 $bg-secondary: #f7f7f7;
-$bg-inverted: $primary;
 
 // OTHER COLORS
 $line-color: darken($bg-secondary, 10%);
-$highlight: #c0e4eb;
 
 // FONT
 $font-family: Lato, sans;
