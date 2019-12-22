@@ -7,7 +7,7 @@ const baseUrl = 'https://api.github.com/users/';
 /* eslint-disable consistent-return */
 async function apiRequest(username, repos = false) {
   try {
-    return await Vue.axios.get(`${baseUrl}${username}${repos ? '/repos?per_page=1000' : ''}`);
+    return await Vue.axios.get(`${baseUrl}${username}${repos ? '/repos?per_page=99999' : ''}`);
   } catch (err) {
     console.log(err);
   }
@@ -43,9 +43,9 @@ const store = new Vuex.Store({
   },
   actions: {
     GET_USER_DETAILS: ({ state, commit }, username) => {
-      commit('CHANGE_LOADING_STATUS', true);
-
       if (state.userDetails.login !== username) {
+        commit('CHANGE_LOADING_STATUS', true);
+
         apiRequest(username).then(({ data }) => {
           commit('SET_DETAILS', data);
 

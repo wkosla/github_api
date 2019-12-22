@@ -37,6 +37,10 @@ export default {
 @import '../node_modules/modern-normalize/modern-normalize.css';
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap&subset=latin-ext');
 
+html {
+  overflow-y: scroll;
+}
+
 body {
   background-color: $bg-primary;
   color: $primary;

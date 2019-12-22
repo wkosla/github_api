@@ -1,49 +1,52 @@
 <template>
-  <div class="user">
-    <template v-if="loadingStatus">
-      <span>LOADING</span>
+  <transition name="fade" mode="out-in">
+    <template v-if="loadingData">
+      <img class="user__loader" :src="require('../assets/oval.svg')" alt="Loading data" key="loading-spinner">
     </template>
     <template v-else>
-      <div class="user__details">
-        <img class="user__avatar" :src="userDetails.avatar_url" alt="Wojciech Kosla gravatar">
-        <header class="user__header">
-          <h1 class="user__name">
-            {{userDetails.name}}
-          </h1>
-          <p class="user__login">
+      <div class="user" key="user">
+        <div class="user__details">
+          <img class="user__avatar" :src="userDetails.avatar_url" alt="Wojciech Kosla gravatar">
+          <header class="user__header">
+            <h1 class="user__name">
+              {{userDetails.name}}
+            </h1>
+            <p class="user__login">
+              <a
+                class="user__link"
+                :href="userDetails.html_url"
+                target="__blank"
+                rel="noreferer"
+              >
+                @{{userDetails.login}}
+              </a>
+            </p>
+          </header>
+        </div>
+
+        <div class="user__repos">
+          <header class="user__header">
+            <h2 class="user__repo-count">
+              Public repositories: {{userDetails.public_repos}}
+            </h2>
+          </header>
+          <ul class="user__repos-list">
             <a
-              :href="userDetails.html_url"
+              v-for="(repo, i) in userRepos"
+              :key="i"
+              :href="repo.html_url"
               target="__blank"
               rel="noreferer"
             >
-              @{{userDetails.login}}
+              <Repo
+                :repo="repo"
+              />
             </a>
-          </p>
-        </header>
-      </div>
-
-      <div class="user__repos">
-        <header class="user__header">
-          <h2 class="user__repo-count">
-            Repositories: {{userDetails.public_repos}}
-          </h2>
-        </header>
-        <ul class="user__repos-list">
-          <a
-            v-for="(repo, i) in userRepos"
-            :key="i"
-            :href="repo.html_url"
-            target="__blank"
-            rel="noreferer"
-          >
-            <Repo
-              :repo="repo"
-            />
-          </a>
-        </ul>
+          </ul>
+        </div>
       </div>
     </template>
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -61,7 +64,7 @@ export default {
     userRepos() {
       return this.$store.getters.getUserRepos;
     },
-    loadingStatus() {
+    loadingData() {
       return this.$store.getters.getLoadingStatus;
     }
   },
@@ -73,6 +76,13 @@ export default {
   margin: 0 auto;
   max-width: 1000px;
   width: 90vw;
+}
+
+.user__loader {
+  display: block;
+  margin: auto;
+  opacity: .7;
+  width: 60px;
 }
 
 .user__details {
@@ -98,6 +108,15 @@ export default {
   margin: 10px 0 0;
 }
 
+.user__link {
+  transition: .15s;
+  will-change: color;
+
+  &:hover {
+    color: $link;
+  }
+}
+
 .user__repo-count {
   margin: 0;
 }
@@ -106,5 +125,13 @@ export default {
   list-style: none;
   margin: 20px 0 0;
   padding: 0;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .2s;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }
 </style>
