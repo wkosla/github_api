@@ -1,28 +1,28 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <UsernamesInput />
+    <Tabs />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+const UsernamesInput = () => import('@/components/Input.vue');
+const Tabs = () => import('@/components/Tabs.vue');
 
 export default {
   name: 'app',
   components: {
-    HelloWorld,
+    UsernamesInput,
+    Tabs,
+  },
+  computed: {
+    usersList() {
+      return this.$store.getters.getUsersList;
+    },
   },
 };
 </script>
 
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
