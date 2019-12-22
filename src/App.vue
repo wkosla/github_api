@@ -27,5 +27,13 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../node_modules/modern-normalize/modern-normalize.css';
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap&subset=latin-ext');
 
+body {
+  background-color: $bg-primary;
+  color: $primary;
+  font-family: $font-family;
+  font-size: .875rem;
+}
 </style>

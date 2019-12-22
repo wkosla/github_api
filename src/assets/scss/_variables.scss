@@ -1,0 +1,21 @@
+// FONT COLORS
+$primary: #332d37;
+$inverted: #fff;
+$link: #e74a3c;
+
+// BG COLOR:
+$bg-primary: #fff;
+$bg-secondary: #f7f7f7;
+$bg-inverted: $primary;
+
+// OTHER COLORS
+$line-color: darken($bg-secondary, 10%);
+$highlight: #c0e4eb;
+
+// FONT
+$font-family: Lato, sans;
+
+// MISC
+$shadow: 0 4px 12px transparentize($primary, .8);
+$shadow-hover: 0 2px 6px transparentize($primary, .9);
+$shadow-top: 0 8px 32px 0 transparentize($primary, .85);
