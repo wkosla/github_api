@@ -25,5 +25,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.tabs {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  margin: 0;
+  min-height: 20px;
+  width: 100%;
+}
 </style>

@@ -1,7 +1,9 @@
 <template>
   <div id="app">
-    <UsernamesInput />
-    <Tabs />
+    <div class="topbar">
+      <UsernamesInput />
+      <Tabs />
+    </div>    
     <User />
   </div>
 </template>
@@ -35,5 +37,9 @@ body {
   color: $primary;
   font-family: $font-family;
   font-size: .875rem;
+}
+
+.topbar {
+  box-shadow: $shadow-top;
 }
 </style>

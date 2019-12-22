@@ -38,10 +38,10 @@ export default {
 <style lang="scss" scoped>
 .input {
   align-items: center;
-  box-shadow: $shadow-top;
   display: flex;
-  padding: 40px;
+  padding: 40px 0 20px;
   justify-content: center;
+  z-index: 10;
 }
 
 .input__label {
