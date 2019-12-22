@@ -4,13 +4,13 @@
       <UsernamesInput />
       <Tabs />
     </div>
-    <User
-      v-if="activeUser"
-      key="user-info"
-    />
     <Error
-      v-else-if="userError"
+      v-if="userError"
       key="user-error"
+    />
+    <User
+      v-else-if="activeUser"
+      key="user-info"
     />
   </div>
 </template>
