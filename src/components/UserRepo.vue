@@ -51,6 +51,10 @@ export default {
     box-shadow: $shadow-hover;
     color: $link;
   }
+
+  @media screen and (max-width: 600px) {
+    flex-wrap: wrap;
+  }
 }
 
 .repo__name {
@@ -70,5 +74,11 @@ export default {
   position: absolute;
   right: 10px;
   top: 10px;
+
+  @media screen and (max-width: 600px) {
+    margin-top: 10px;
+    position: unset;
+    width: 100%;
+  }
 }
 </style>

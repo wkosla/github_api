@@ -43,12 +43,23 @@ export default {
   padding: 40px 20px 20px;
   justify-content: center;
   z-index: 10;
+
+  @media screen and (max-width: 500px) {
+    flex-direction: column;
+  }
 }
 
 .input__label {
   font-size: 1em;
   font-weight: bold;
   margin-right: 10px;
+
+  @media screen and (max-width: 600px) {
+    height: 1px;
+    margin: 0;
+    overflow: hidden;
+    width: 1px;
+  }
 }
 
 .input__input {
@@ -57,6 +68,7 @@ export default {
   font-family: $font-family;
   font-size: 1em;
   margin-right: 10px;
+  max-width: calc(100% - 40px);
   padding: 10px;
   transition: .15s;
   width: 300px;
@@ -86,6 +98,10 @@ export default {
   &:hover {
     box-shadow: $shadow-hover;
     color: $link;
+  }
+
+  @media screen and (max-width: 500px) {
+    margin-top: 20px;
   }
 }
 </style>

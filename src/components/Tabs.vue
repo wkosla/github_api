@@ -28,9 +28,11 @@ export default {
 .tabs {
   display: flex;
   list-style: none;
+  flex-wrap: wrap;
   justify-content: center;
   margin: 0;
   min-height: 20px;
+  overflow: hidden;
   padding: 0;
   width: 100%;
 }
