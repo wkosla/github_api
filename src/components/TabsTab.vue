@@ -1,6 +1,6 @@
 <template>
-  <li :class="['tab', {'tab--active': isActive}]">
-    <button class="tab__btn" @click="showUserDetails">
+  <li :class="['tab', {'tab--hidden': isEmpty}]">
+    <button :class="['tab__btn', {'tab__btn--active': isActive}]" @click="showUserDetails">
       {{user}}
     </button>
   </li>
@@ -21,6 +21,10 @@ export default {
       const activeUser = this.$store.getters.getUserDetails.login;
       return activeUser === this.user;
     },
+    isEmpty() {
+      const re = /^(?!\s*$).+/g;
+      return !re.test(this.user);
+    },
   },
   methods: {
     showUserDetails() {
@@ -32,25 +36,31 @@ export default {
 
 <style lang="scss" scoped>
 .tab {
-  border-bottom: 1px solid $primary;
-  cursor: pointer;
   margin: 0 10px;
 
-  &--active,
-  &:hover {
-    border-color: $link;
-    color: $link;
+  &--hidden {
+    display: none;
   }
 }
 
 .tab__btn {
   background-color: $bg-primary;
   border: 0;
+  border-bottom: 1px solid $primary;
   color: inherit;
   cursor: pointer;
+  display: list-item;
   font-size: 1.12em;
   font-weight: bold;
   letter-spacing: .1em;
   padding: 20px;
+  transition: .15s;
+  will-change: color, border-color;
+
+  &--active,
+  &:hover {
+    border-color: $link;
+    color: $link;
+  }
 }
 </style>

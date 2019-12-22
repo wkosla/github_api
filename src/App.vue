@@ -41,5 +41,6 @@ body {
 
 .topbar {
   box-shadow: $shadow-top;
+  margin-bottom: 80px;
 }
 </style>

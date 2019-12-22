@@ -18,7 +18,7 @@ export default {
   },
   computed: {
     usersList() {
-      return this.$store.getters.getUsersList;
+      return this.$store.getters.getUsersList.slice();
     },
   },
 };
