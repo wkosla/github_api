@@ -48,9 +48,9 @@ const store = new Vuex.Store({
   },
   actions: {
     GET_USER_DETAILS: ({ state, commit, dispatch }, username) => {
-      dispatch('CLEAR_USER');
-
       if (state.userDetails.login !== username) {
+        dispatch('CLEAR_USER');
+
         commit('CHANGE_LOADING_STATUS', true);
         commit('SET_USER_ERROR', false);
 
