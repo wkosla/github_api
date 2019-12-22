@@ -39,7 +39,8 @@ export default {
 .input {
   align-items: center;
   display: flex;
-  padding: 40px 0 20px;
+  flex-wrap: wrap;
+  padding: 40px 20px 20px;
   justify-content: center;
   z-index: 10;
 }

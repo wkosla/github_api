@@ -3,8 +3,10 @@
     <div class="topbar">
       <UsernamesInput />
       <Tabs />
-    </div>    
-    <User />
+    </div>
+    <User
+      v-if="activeUser"
+    />
   </div>
 </template>
 
@@ -24,6 +26,9 @@ export default {
     usersList() {
       return this.$store.getters.getUsersList;
     },
+    activeUser() {
+      return this.$store.getters.getUserDetails.login;
+    },
   },
 };
 </script>
@@ -39,8 +44,21 @@ body {
   font-size: .875rem;
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    color: inherit;
+  }
+}
+
 .topbar {
   box-shadow: $shadow-top;
   margin-bottom: 80px;
+}
+
+#app {
+  padding-bottom: 80px;
 }
 </style>
