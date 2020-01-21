@@ -1,5 +1,7 @@
 # Crafton VueJS Task
 
+Simple app showing GitHub users and list of their public repositories.
+
 Build using Vue CLI. Requires Node.js >= 8 with npm.
 
 ## Project setup
