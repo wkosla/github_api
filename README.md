@@ -1,4 +1,4 @@
-# Crafton VueJS Task
+# GitHub user API app
 
 Simple app showing GitHub users and list of their public repositories.
 
